@@ -25,6 +25,24 @@ module.exports = function (app) {
             
         });
     });
+
+    app.get("/saved", function(req, res) {
+
+        articlesController.get({saved: true}, function(data) {
+             
+            if(error){
+                console.log(error)
+            }else if (data.length ===0){
+                res.render("blank")
+            }else {
+                var object = {
+                    articles: data
+                  };
+                  res.render("saved", object);
+            }
+            
+        });
+    });
     
     app.get("/scrape", function (req, res) {
 
