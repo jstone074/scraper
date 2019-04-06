@@ -1,0 +1,27 @@
+{
+  "name": "scrapper",
+  "version": "1.0.0",
+  "description": "Food Scrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstone074/scrapper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jstone074/scrapper/issues"
+  },
+  "homepage": "https://github.com/jstone074/scrapper#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "mongoose": "^5.4.22",
+    "morgan": "^1.9.1"
+  }
+}
