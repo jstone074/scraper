@@ -30,6 +30,14 @@ app.use(router);
 // if deployed, use the deployed database. Otherwise, use the local mongoHeadlines database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/cookingarticles";
 
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true}, (err) => {
+    if (err) {
+        console.log(err);
+    }else{
+        console.log("connected to DB");
+    }
+});
+
 // Start the server
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");

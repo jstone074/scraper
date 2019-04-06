@@ -15,7 +15,7 @@ module.exports = function(app) {
             // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
             var $ = cheerio.load(response.data);
     
-            var results = [];
+            var result = [];
     
             $(".fixed-recipe-card").each(function (i, element) {
     
@@ -24,14 +24,14 @@ module.exports = function(app) {
                 var summary = $(element).children().find("img").attr("alt");
     
                 // Save these results in an object that we'll push into the results array we defined earlier
-                results.push({
+                result.push({
                     title: title,
                     link: link,
                     summary:summary
                 });
-            });
+            
     
-            console.log(results);
+            // console.log(results);
     
             db.Article.create(result)
             .then(function(dbArticle) {
@@ -42,7 +42,7 @@ module.exports = function(app) {
               // If an error occurred, log it
               console.log(err);
             });
-    
+        });
             // Send a message to the client
             res.send("Scrape Complete");
         });
