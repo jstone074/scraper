@@ -50,7 +50,7 @@ mongoose.connect(MONGODB_URI, {useNewUrlParser: true}, (err) => {
 });
 
 // Start the server
-app.listen(PORT, function() {
-    console.log("App running on port " + PORT + "!");
+app.listen(port, function() {
+    console.log("App running on port " + port + "!");
   });
   
