@@ -2,9 +2,9 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 
-
 // Require all models
 var db = require("../models");
+var articlesController = require("../controllers/articles");
 
 module.exports = function (app) {
     
@@ -27,26 +27,28 @@ module.exports = function (app) {
     });
 
     app.get("/saved", function(req, res) {
+        console.log("I'm here")
 
-        articlesController.get({saved: true}, function(data) {
-             
-            if(error){
-                console.log(error)
-            }else if (data.length ===0){
-                res.render("blank")
-            }else {
-                var object = {
+        db.Article.find({saved:true}, function(error,data){
+
+               var object = {
                     articles: data
-                  };
-                  res.render("saved", object);
-            }
+                };
+            console.log(object);
+                res.render("saved",object);
+            
             
         });
+
+        // articlesController.get({saved:true}, function(data) {
+        //     var object = {
+        //       articles: data
+        //     };
+        //     res.render("saved", object);
+        // });
     });
     
-    app.get("/scrape", function (req, res) {
-
-        
+    app.get("/scrape", function (req, res) {        
         axios.get("https://www.allrecipes.com/recipes/78/breakfast-and-brunch/").then(function (response) {
 
             // Load the HTML into cheerio and save it to a variable
@@ -68,8 +70,6 @@ module.exports = function (app) {
                     summary: summary
                 });
 
-
-                // console.log(results);
 
                 db.Article.create(result)
                     .then(function (dbArticle) {
@@ -99,8 +99,29 @@ module.exports = function (app) {
                 res.json(err);
             });
     });
-}
 
+
+    //Saving Articles Route
+    app.patch("/api/articles", function(req, res) {
+        
+        articlesController.update(req.body, function(err, data) {
+ 
+            res.json(data);
+            
+        });
+
+    });
+ 
+
+
+
+
+
+
+    
+
+}
+        
 
 
 

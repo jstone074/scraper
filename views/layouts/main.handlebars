@@ -10,20 +10,24 @@
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Mongo Scraper</a>
+  <form action="/" method="get">
+  <button class="btn bg-Alert" >Mongo Scraper</button>
+  </form>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      {{!-- <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li> --}}
       <li class="nav-item">
-        <a class="nav-link" href="#">Saved Article</a>
+        {{!-- This needs to be a form with the action of the route to route correctly --}}
+        <form class="navbar-form" action="/saved" method="get" id="save-route">
+        <button class="btn bg-Alert">Saved Article</button>
+       </form> 
       </li>
       <li class="nav-item">
-        <button class="btn bg-danger" href="#">Scrape New Articles</a>
+        <form action="/scrape" method="get"> 
+        <button class="btn bg-danger" id="scrape-articles">Scrape New Articles</button>
+        </form>
       </li>
      </ul>
   </div>
@@ -32,5 +36,13 @@
 <body>
     {{{body}}}
 </body>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script type="text/javascript" src="/assets/app.js"></script>
 
 </html>
