@@ -1,5 +1,5 @@
 # Food Scraper
-##Food Scraper
+## Food Scraper
 
 * This is a scraper application that scraps a recipe website for breakfast food ideas and then returns the description, summary, and URL to the recipe.
 
