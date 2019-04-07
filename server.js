@@ -3,6 +3,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
 var path = require("path");
+var bodyParser = require("body-parser");
 var axios = require("axios");
 var cheerio = require("cheerio");
 var db = require("./models");
@@ -15,6 +16,10 @@ var app = express();
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 // ------- PORT ---------
 var port = process.env.PORT || 3000;
 
@@ -24,6 +29,8 @@ var port = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
+
+//For the public folder
 app.use(express.static(process.cwd() + "/public"));
 
 // ------- Router ---------
