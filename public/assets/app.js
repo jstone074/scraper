@@ -58,9 +58,10 @@ $(".delete-article").click(function() {
     })
 
 })
+})
 
 //routes for note taking
-$(".savenote").on('click', function() {
+$(document).on("click", ".savenote", function() {
     var ID = $(this).attr("data-id"); 
     // console.log("This is my ID", ID );
   var input = {
@@ -72,18 +73,16 @@ $(".savenote").on('click', function() {
         method: "POST",
         url: "/articles/" + ID,
         data: {
-            body:$("#bodyinput").val(),
-            title: "Note" 
-        }
-
+            body: {body:$("#bodyinput").val() }
+          }
     })
     .then(function(data) {
-        console.log("This is my data from POST....",data)
+        console.log("This is my data from POST....", data)
         $('#noteModal').modal('hide');
     });
 });
 
-$(".note-button").on('click', function() {
+$(document).on("click",".note-button", function() {
     var ID = $(this).attr("data-id"); 
 
     // console.log("I'm in the route to log existing notes");
@@ -108,4 +107,3 @@ $(".note-button").on('click', function() {
 
 
 
-})

@@ -139,7 +139,7 @@ app.get("/articles", function(req, res) {
     
     // Route for saving/updating an Article's associated Note
     app.post("/articles/:id", function(req, res) {
-        // console.log("I'm here!!!!!",req.body.body)
+        console.log("I'm here!!!!!",req.body.body)
         // Create a new note and pass the req.body to the entry
         db.Note.create(req.body.body)
         .then(function(dbNote) {
@@ -148,7 +148,7 @@ app.get("/articles", function(req, res) {
         })
         .then(function(dbArticle) {
             // If we were able to successfully update an Article, send it back to the client
-            // console.log("Note Create with body of", dbArticle)
+            console.log("Note Create with body of", dbArticle)
             res.json(dbArticle);
         })
         .catch(function(err) {
